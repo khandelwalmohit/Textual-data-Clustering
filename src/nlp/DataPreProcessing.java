@@ -8,6 +8,8 @@ import java.util.HashSet;
 import java.util.List;
 import java.util.Set;
 
+import edu.stanford.nlp.simple.*;
+
 public class DataPreProcessing {
 	List<String> docData;
 	Set<String> stop_words;
