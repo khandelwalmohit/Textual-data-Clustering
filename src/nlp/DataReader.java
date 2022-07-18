@@ -54,7 +54,7 @@ public class DataReader {
 			String fileContent = "";
 			try {
 				while((line = reader.readLine())!= null) {
-					fileContent+= line + " ";
+					fileContent+= line+ " ";
 				}
 			} catch (IOException e) {
 				e.printStackTrace();
@@ -108,7 +108,7 @@ public class DataReader {
 			String line = "";
 			try {
 				while((line = reader.readLine())!= null) {
-					stopWord.add(line);
+					stopWord.add(line.trim());
 				}
 			} catch (IOException e) {
 				e.printStackTrace();
