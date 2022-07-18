@@ -1,0 +1,3 @@
+[main] INFO edu.stanford.nlp.pipeline.StanfordCoreNLP - Adding annotator tokenize
+[main] INFO edu.stanford.nlp.pipeline.StanfordCoreNLP - Adding annotator ssplit
+[main] INFO edu.stanford.nlp.pipeline.StanfordCoreNLP - Adding annotator pos

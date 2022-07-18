@@ -40,7 +40,7 @@ public class DataPreProcessing {
 	
 	private String processString(String text){
 		List<String> filter = new ArrayList<String>();
-		List<String> split_array = new ArrayList<String>(Arrays.asList(text.toLowerCase().split("[-!~,.():\\\\[\\\\]\\\"\\\\s]+")));
+		List<String> split_array = new ArrayList<String>(Arrays.asList(text.toLowerCase().split("[-!~,.():\\[\\]\"\\s]+")));
 		
 		for(String s: split_array) {
 			String word = s.trim();

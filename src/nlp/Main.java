@@ -12,11 +12,14 @@ public class Main {
 		DataPreProcessing pp = new DataPreProcessing(data);
 		List<String> processed = pp.PreProcess();
 		
-		for(String s: processed) {
-			System.out.println(s);
-		}
+//		for(String s: processed) {
+//			System.out.println(s);
+//		}
 		
-		new NGram(processed, 3);
+		//new NGram(processed, 3);
+		
+		TFIDF tf = new TFIDF(processed);
+		double[][] tfidf = tf.buildTFIDF();
 		
 	}
 
