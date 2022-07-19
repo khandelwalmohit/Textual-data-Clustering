@@ -21,6 +21,7 @@ public class TFIDF {
 	double[][] tf, tfIDfMatix;
 	int[] freq;
 	int[][] curr;
+	List<Map<String, Integer>> docmaps;
 	
 	public TFIDF(List<String> data) {
 		this.data = data;
@@ -94,7 +95,7 @@ public class TFIDF {
 			}
 		}
 		
-		List<Map<String, Integer>> docmaps = new ArrayList<Map<String, Integer>>();
+		docmaps = new ArrayList<Map<String, Integer>>();
         tfIDfMatix = new double[24][matrix.size()];
         
         Map<String, Integer> tmp;
@@ -110,7 +111,7 @@ public class TFIDF {
             
 //            System.out.println(tmp.toString());
             tmp = sortValues(tmp);
-            System.out.println(tmp.toString());
+            //System.out.println(tmp.toString());
             
             updateMatrix(i);
             
@@ -118,55 +119,60 @@ public class TFIDF {
         }
 //        System.out.println(docmaps.toString());
 //        System.out.println("[");
-//        FileWriter fw = null;
-//		try {
-//			fw = new FileWriter(System.getProperty("user.dir")+ "/src/external_resources/topics.txt");
-//		} catch (IOException e) {
-//			// TODO Auto-generated catch block
-//			e.printStackTrace();
-//		}
-//        for (Map<String, Integer> temp : docmaps) {
-//            int setVal = 1;
-//            System.out.print("{");
-//            try {
-//				fw.write("{");
-//			} catch (IOException e) {
-//				// TODO Auto-generated catch block
-//				e.printStackTrace();
-//			}
-//            for (String key : temp.keySet()) {
-//                System.out.print(key + " : " + temp.get(key) + " ");
-//                try {
-//					fw.write(key + " : " + temp.get(key) + " ");
-//				} catch (IOException e) {
-//					// TODO Auto-generated catch block
-//					e.printStackTrace();
-//				}
-//                setVal++;
-//                if (setVal > 100) {
-//                    break;
-//                }
-//            }
-//            System.out.println("},");
-//            try {
-//				fw.write("}\n");
-//			} catch (IOException e) {
-//				// TODO Auto-generated catch block
-//				e.printStackTrace();
-//			}
-//        }
-//        System.out.println("]");
-//        try {
-//			fw.close();
-//		} catch (IOException e) {
-//			// TODO Auto-generated catch block
-//			e.printStackTrace();
-//		}
-//        
+
+        
         return tfIDfMatix;
 		
 	}
 	
+	public void writeTopics()
+	{	
+		System.out.println("Writing Topics to topics.txt");
+		FileWriter fw = null;
+		try {
+			fw = new FileWriter(System.getProperty("user.dir")+ "/src/external_resources/topics.txt");
+		} catch (IOException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+        for (Map<String, Integer> temp : docmaps) {
+            int setVal = 1;
+//            System.out.print("{");
+            try {
+				fw.write("{");
+			} catch (IOException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
+            for (String key : temp.keySet()) {
+//                System.out.print(key + " : " + temp.get(key) + " ");
+                try {
+					fw.write(key + " : " + temp.get(key) + " ");
+				} catch (IOException e) {
+					// TODO Auto-generated catch block
+					e.printStackTrace();
+				}
+                setVal++;
+                if (setVal > 100) {
+                    break;
+                }
+            }
+//            System.out.println("},");
+            try {
+				fw.write("}\n");
+			} catch (IOException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
+        }
+//        System.out.println("]");
+        try {
+			fw.close();
+		} catch (IOException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+	}
 	private Map<String, Integer> sortValues(Map<String, Integer> map) {
 //		return map.entrySet().stream()
 //			       .sorted(Collections.reverseOrder(Map.Entry.comparingByValue()))

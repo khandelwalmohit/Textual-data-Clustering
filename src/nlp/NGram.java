@@ -17,6 +17,8 @@ public class NGram {
 		for(String s: data) {
 			NGramEachString(s);
 		}
+		
+		System.out.print("\n\n");
 	}
 	
 	private void NGramEachString(String text) {
@@ -56,7 +58,7 @@ public class NGram {
 				int curr_freq = matrix.get(entry).get(i);
 				if(threshold <= curr_freq) {
 					n_grams.add(new ArrayList<String>(Arrays.asList(curr, entry, String.valueOf(curr_freq))));
-					System.out.println(curr + " "+ entry + " " + String.valueOf(curr_freq));
+					System.out.print(curr + " "+ entry + " " + String.valueOf(curr_freq)+", ");
 				}
 			}
 		}
